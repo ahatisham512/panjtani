@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Admin specific overrides to keep it clean */
+        body { background-color: #f9f9f9; color: #333; }
+        .admin-header { background: #111; color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        .admin-nav { display: flex; gap: 1rem; }
+        .admin-nav button { background: none; border: 1px solid #555; color: #fff; padding: 0.5rem 1rem; cursor: pointer; }
+        .admin-nav button.active { background: #fff; color: #000; }
+        .admin-panel { display: none; padding: 2rem 5%; }
+        .admin-panel.active { display: block; }
+        .card { background: #fff; padding: 2rem; border: 1px solid #ddd; margin-bottom: 2rem; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        table { width: 100%; border-collapse: collapse; text-align: left; background: #fff; }
+        th, td { border: 1px solid #ddd; padding: 0.75rem; font-size: 0.9rem; }
+        th { background: #eee; text-transform: uppercase; }
+        .color-picker-group { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .color-picker-group input[type="color"] { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <h2>E-COM PAK Admin</h2>
+        <div class="admin-nav">
+            <button class="active" data-target="theme-panel">Theme Customizer</button>
+            <button data-target="content-panel">Static Content</button>
+            <button data-target="inventory-panel">Inventory</button>
+            <button data-target="ledger-panel">Order Ledger</button>
+        </div>
+    </header>
+
+    <!-- Theme Customizer Panel -->
+    <section id="theme-panel" class="admin-panel active">
+        <div class="card">
+            <h3>Global Real-Time Theme Customizer</h3>
+            <p style="margin-bottom: 1.5rem; color: #666;">Changes apply instantly to the frontend DB configuration.</p>
+            <form id="theme-form">
+                <div class="color-picker-group">
+                    <label style="width: 150px;">Background Color</label>
+                    <input type="color" id="bg-color-picker" value="#FFFFFF">
+                </div>
+                <div class="color-picker-group">
+                    <label style="width: 150px;">Text Color</label>
+                    <input type="color" id="text-color-picker" value="#000000">
+                </div>
+                <div class="color-picker-group">
+                    <label style="width: 150px;">Button Color</label>
+                    <input type="color" id="btn-color-picker" value="#000000">
+                </div>
+                <button type="submit" class="btn" style="margin-top: 1rem;">Save Theme Configuration</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Static Content Panel -->
+    <section id="content-panel" class="admin-panel">
+        <div class="card">
+            <h3>YouTube Brand Story</h3>
+            <form id="youtube-form" style="margin-top: 1rem;">
+                <div class="form-group">
+                    <label>Embed Video URL String</label>
+                    <input type="url" id="youtube-url-input" placeholder="https://www.youtube.com/embed/...">
+                </div>
+                <button type="submit" class="btn">Update Video</button>
+            </form>
+        </div>
+        <div class="card">
+            <h3>Index Slider Banners</h3>
+            <form id="banner-form" style="margin-top: 1rem;">
+                <div class="form-group">
+                    <label>Upload New Banner (Image)</label>
+                    <input type="file" id="banner-upload" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn">Push to Slider</button>
+            </form>
+            <div id="banner-list" style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <!-- Current banners rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventory CRUD Panel -->
+    <section id="inventory-panel" class="admin-panel">
+        <div class="card">
+            <h3>Add New Product</h3>
+            <form id="add-product-form" style="margin-top: 1rem;">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Product Title String</label>
+                        <input type="text" id="prod-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Baseline Pricing (Rs.)</label>
+                        <input type="number" id="prod-price" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="prod-category" style="width: 100%; padding: 0.8rem; border: 1px solid #000;" required>
+                            <option value="Women's Collection">Women's Collection</option>
+                            <option value="Men's Collection">Men's Collection</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="New Arrivals">New Arrivals</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Media Gallery Upload (Max 5)</label>
+                        <input type="file" id="prod-images" accept="image/*" multiple>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label>Body Description</label>
+                    <textarea id="prod-desc" style="width: 100%; padding: 0.8rem; border: 1px solid #000; height: 100px;" required></textarea>
+                </div>
+                
+                <!-- Simple variant mapping for admin UI -->
+                <div class="form-group">
+                    <label>Variants (JSON Array - Size, Color, Stock)</label>
+                    <textarea id="prod-variants" style="width: 100%; padding: 0.8rem; border: 1px solid #000; height: 100px;" placeholder='[{"size":"M", "color":"Black", "stock":10}]'></textarea>
+                </div>
+
+                <button type="submit" class="btn">Create Listing</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Current Inventory Matrix</h3>
+            <table id="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Price (Rs.)</th>
+                        <th>Variants Count</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Injected via JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Order Ledger Spreadsheet -->
+    <section id="ledger-panel" class="admin-panel">
+        <div class="card" style="padding: 0; border: none;">
+            <h3 style="margin-bottom: 1rem;">Chronological Order Ledger Spreadsheet</h3>
+            <div style="overflow-x: auto;">
+                <table id="ledger-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Customer Name</th>
+                            <th>Phone Number</th>
+                            <th>Shipping Address</th>
+                            <th>City</th>
+                            <th>Ordered Product Name</th>
+                            <th>Chosen Variant (Size/Color)</th>
+                            <th>Calculated Total Price (Rs.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <!-- Admin Dashboard Logic -->
+    <script src="./js/admin.js"></script>
+</body>
+</html>

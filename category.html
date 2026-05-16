@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category | E-COM PAK</title>
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="fade-in">
+    <!-- Header Sequence: Branding and Navigation -->
+    <header class="site-header">
+        <div class="header-left">
+            <a href="./index.html" class="brand-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z"/></svg>
+                E-COM PAK
+            </a>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li><a href="./index.html#about">About Us</a></li>
+                <li><a href="./index.html#policy">Policy</a></li>
+                <li><a href="./index.html#shipping">Shipping</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <a href="tel:+92000000000" class="btn">Call Now</a>
+            <div class="cart-icon">
+                <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                <span class="cart-badge" id="cart-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 id="category-title" style="text-align: center; margin-top: 2rem; text-transform: uppercase;">Category</h1>
+        
+        <!-- Dynamic Product Grid -->
+        <div class="product-grid" id="product-grid">
+            <!-- Products injected here via JS -->
+        </div>
+    </main>
+
+    <!-- Global App Logic -->
+    <script src="./js/main.js"></script>
+    <script>
+        /**
+         * Initialize Category Page
+         * Parses URL for category name and fetches products.
+         */
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('cat');
+            if (category) {
+                document.getElementById('category-title').textContent = category;
+                await fetchProducts(category);
+            }
+        });
+
+        async function fetchProducts(category) {
+            try {
+                const res = await fetch(`/api/products?category=${encodeURIComponent(category)}`);
+                const products = await res.json();
+                const grid = document.getElementById('product-grid');
+                grid.innerHTML = '';
+                
+                if (products.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center; grid-column: 1 / -1;">No products found in this category.</p>';
+                    return;
+                }
+
+                products.forEach(product => {
+                    const card = document.createElement('a');
+                    card.href = `./product.html?id=${product._id}`;
+                    card.className = 'product-card fade-in';
+                    
+                    const imgUrl = product.images && product.images.length > 0 ? product.images[0] : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23eee"/></svg>';
+                    
+                    card.innerHTML = `
+                        <img src="${imgUrl}" alt="${product.title}" loading="lazy">
+                        <div class="product-title">${product.title}</div>
+                        <div class="product-price">Rs. ${product.price.toLocaleString()}</div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching products', error);
+            }
+        }
+    </script>
+</body>
+</html>

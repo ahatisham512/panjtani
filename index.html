@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COM PAK | Official Store</title>
+    <meta name="description" content="Shop premium quality apparel and accessories at E-COM PAK.">
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="fade-in">
+
+    <!-- Header Sequence: Branding and Navigation -->
+    <header class="site-header">
+        <div class="header-left">
+            <!-- Brand Logo -->
+            <a href="./index.html" class="brand-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z"/></svg>
+                E-COM PAK
+            </a>
+        </div>
+        
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#policy">Policy</a></li>
+                <li><a href="#shipping">Shipping</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="tel:+92000000000" class="btn">Call Now</a>
+            <a href="https://wa.me/92000000000" target="_blank" class="btn btn-whatsapp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                WhatsApp
+            </a>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." aria-label="Search">
+                <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+
+            <div class="cart-icon">
+                <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                <span class="cart-badge" id="cart-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+        <div class="hero-slider" id="hero-slider">
+            <!-- Dynamic slides injected via JS. Fallback slide: -->
+            <div class="hero-slide" style="background-color: #E0E0E0;">
+                <div class="hero-content">
+                    <h1>NEW ARRIVALS</h1>
+                    <p>Discover the latest trends in our collection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Gateway: Quick links to collections -->
+    <section class="category-gateway">
+        <h2>Shop By Category</h2>
+        <div class="grid-4">
+            <!-- Strict structural CSS grid. Clicks open dynamic new browser tab -->
+            <a href="./category.html?cat=Women's%20Collection" target="_blank" class="category-card">
+                <div class="overlay"></div>
+                <h3>Women's</h3>
+            </a>
+            <a href="./category.html?cat=Men's%20Collection" target="_blank" class="category-card">
+                <div class="overlay"></div>
+                <h3>Men's</h3>
+            </a>
+            <a href="./category.html?cat=Accessories" target="_blank" class="category-card">
+                <div class="overlay"></div>
+                <h3>Accessories</h3>
+            </a>
+            <a href="./category.html?cat=New%20Arrivals" target="_blank" class="category-card">
+                <div class="overlay"></div>
+                <h3>New Arrivals</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- Media Frame -->
+    <section class="media-frame">
+        <h2>Our Brand Story</h2>
+        <div class="video-container">
+            <iframe id="brand-video" src="" title="Brand Story Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Semantic Footer: Legal links and social icons -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <ul>
+                <li><a id="about" href="#about">About Us</a></li>
+                <li><a id="policy" href="#policy">Return Policy</a></li>
+                <li><a id="shipping" href="#shipping">Shipping Policy</a></li>
+            </ul>
+        </div>
+        
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg></a>
+            <a href="https://wa.me/92000000000" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.5 21.94,11.87C21.94,13.2 21.9,13.87 21.84,14.67C21.78,15.47 21.69,16.1 21.56,16.57C21.31,17.73 20.47,18.5 19.43,18.68C18.53,18.8 16.5,18.87 12,18.87C7.5,18.87 5.47,18.8 4.57,18.68C3.53,18.5 2.69,17.73 2.44,16.57C2.31,16.1 2.22,15.47 2.16,14.67C2.09,13.87 2.06,13.2 2.06,11.87C2.06,10.5 2.09,9.87 2.16,9.07C2.22,8.27 2.31,7.64 2.44,7.17C2.69,6.04 3.53,5.27 4.57,5.09C5.47,4.97 7.5,4.9 12,4.9C16.5,4.9 18.53,4.97 19.43,5.09C20.47,5.27 21.31,6.04 21.56,7.17Z"/></svg></a>
+        </div>
+    </footer>
+
+    <!-- Global App Logic -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
